@@ -48,6 +48,7 @@
             <div class="card card-custom p-4 text-center">
                 <h5>Kelola Data</h5>
                 <p>Polis Asuransi Kendaraan</p>
+                <p> INI ADA KESALAHAN JADI AKU UPDATE YANG BARU</p>
                 <a href="<?= base_url('polis') ?>" class="btn btn-custom mt-3">Lihat Data Polis</a>
             </div>
         </div>
