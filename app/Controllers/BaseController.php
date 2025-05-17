@@ -55,4 +55,9 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = service('session');
     }
+
+    public function index()
+    {
+        return view('dashboard');
+    }
 }
