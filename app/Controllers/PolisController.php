@@ -113,5 +113,5 @@ class PolisController extends BaseController
     // Beri pesan sukses setelah penghapusan
     return redirect()->to('/polis')->with('success', 'Polis berhasil dihapus');
 }
-
+ 
 }
