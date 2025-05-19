@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Polis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Tambah Polis (REST API)</h2>
+    <form id="form-tambah">
+        <input type="text" name="nama_tertanggung" class="form-control mb-2" placeholder="Nama Tertanggung" required>
+        <input type="date" name="tanggal_efektif" class="form-control mb-2" required>
+        <input type="date" name="tanggal_expired" class="form-control mb-2" required>
+        <input type="text" name="merek_kendaraan" class="form-control mb-2" placeholder="Merek Kendaraan" required>
+        <input type="text" name="tipe_kendaraan" class="form-control mb-2" placeholder="Tipe Kendaraan" required>
+        <input type="number" name="tahun_kendaraan" class="form-control mb-2" placeholder="Tahun Kendaraan" required>
+        <input type="number" name="harga_kendaraan" class="form-control mb-2" placeholder="Harga Kendaraan" required>
+        <input type="number" name="rate_premi" class="form-control mb-2" placeholder="Rate Premi (%)" required>
+        <button type="submit" class="btn btn-primary">Tambah</button>
+        <a href="/api-view/polis_api_view.php" class="btn btn-secondary">Kembali</a>
+    </form>
+</div>
+
+<script>
+document.getElementById('form-tambah').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = {
+        nama_tertanggung: form.nama_tertanggung.value,
+        tanggal_efektif: form.tanggal_efektif.value,
+        tanggal_expired: form.tanggal_expired.value,
+        merek_kendaraan: form.merek_kendaraan.value,
+        tipe_kendaraan: form.tipe_kendaraan.value,
+        tahun_kendaraan: form.tahun_kendaraan.value,
+        harga_kendaraan: parseFloat(form.harga_kendaraan.value),
+        rate_premi: parseFloat(form.rate_premi.value)
+    };
+
+    fetch('http://localhost:8080/api/polis', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+    .then(() => window.location.href = '/api-view/polis_api_view.php');
+});
+</script>
+</body>
+</html>
