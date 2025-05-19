@@ -34,15 +34,37 @@
             font-weight: bold;
             text-decoration: none;
         }
+        nav button {
+        margin: 5px;
+        padding: 8px 12px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+        nav button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
 
 <div class="container mt-5">
-    <div class="header">
+    <div class="header d-flex justify-content-between align-items-center">
         <h2>Dashboard</h2>
+        <a href="/logout" class="btn btn-danger">Logout</a>
     </div>
-
+     <nav style="margin-bottom: 20px;">
+        <strong>Navigasi Bab:</strong><br>
+        <button onclick="location.href='/pembelajaran_sql/dasar'">Bab 1: Query Dasar</button>
+        <button onclick="location.href='/pembelajaran_sql/agregasi'">Bab 2: Agregasi & Grouping</button>
+        <button onclick="location.href='/pembelajaran_sql/join'">Bab 3: Relasi Tabel (JOIN)</button>
+        <button onclick="location.href='/pembelajaran_sql/subquery'">Bab 4: Subquery & Nested Query</button>
+        <button onclick="location.href='/pembelajaran_sql/manipulasi'">Bab 5: Manipulasi Data</button>
+        <button onclick="location.href='/pembelajaran_sql/advanced'">Bab 6: Advanced Data</button>
+        <button onclick="location.href='/pembelajaran_sql/tambahan'">Bab 7: Tambahan</button>
+    </nav>
     <div class="row mt-5 justify-content-center">
         <div class="col-md-4">
             <div class="card card-custom p-4 text-center">
@@ -52,6 +74,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
