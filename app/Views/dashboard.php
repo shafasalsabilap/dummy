@@ -64,6 +64,7 @@
         <button onclick="location.href='/pembelajaran_sql/manipulasi'">Bab 5: Manipulasi Data</button>
         <button onclick="location.href='/pembelajaran_sql/advanced'">Bab 6: Advanced Data</button>
         <button onclick="location.href='/pembelajaran_sql/tambahan'">Bab 7: Tambahan</button>
+        <button onclick="location.href='http://localhost:8080/api-view/polis_api_view.html'">Data Polis (API)</button>
     </nav>
     <div class="row mt-5 justify-content-center">
         <div class="col-md-4">

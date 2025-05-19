@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Polis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Edit Polis (REST API)</h2>
+    <form id="form-edit">
+        <input type="hidden" name="id" id="id">
+        <input type="text" name="nama_tertanggung" class="form-control mb-2" placeholder="Nama Tertanggung" required>
+        <input type="date" name="tanggal_efektif" class="form-control mb-2" required>
+        <input type="date" name="tanggal_expired" class="form-control mb-2" required>
+        <input type="text" name="merek_kendaraan" class="form-control mb-2" placeholder="Merek Kendaraan" required>
+        <input type="text" name="tipe_kendaraan" class="form-control mb-2" placeholder="Tipe Kendaraan" required>
+        <input type="number" name="tahun_kendaraan" class="form-control mb-2" placeholder="Tahun Kendaraan" required>
+        <input type="number" name="harga_kendaraan" class="form-control mb-2" placeholder="Harga Kendaraan" required>
+        <input type="number" name="rate_premi" class="form-control mb-2" placeholder="Rate Premi (%)" required>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/api-view/polis_api_view.php" class="btn btn-secondary">Kembali</a>
+    </form>
+</div>
+
+<script>
+// Ambil ID dari URL
+const params = new URLSearchParams(window.location.search);
+const id = params.get('id');
+
+// Preload data polis yang mau di-edit
+fetch(`http://localhost:8080/api/polis/${id}`)
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('id').value = data.id;
+        const form = document.getElementById('form-edit');
+        for (const key in data) {
+            if (form[key]) form[key].value = data[key];
+        }
+    });
+
+document.getElementById('form-edit').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = {
+        nama_tertanggung: form.nama_tertanggung.value,
+        tanggal_efektif: form.tanggal_efektif.value,
+        tanggal_expired: form.tanggal_expired.value,
+        merek_kendaraan: form.merek_kendaraan.value,
+        tipe_kendaraan: form.tipe_kendaraan.value,
+        tahun_kendaraan: form.tahun_kendaraan.value,
+        harga_kendaraan: parseFloat(form.harga_kendaraan.value),
+        rate_premi: parseFloat(form.rate_premi.value)
+    };
+
+    fetch(`http://localhost:8080/api/polis/${id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+    .then(() => window.location.href = '/api-view/polis_api_view.html');
+});
+</script>
+</body>
+</html>

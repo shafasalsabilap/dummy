@@ -28,3 +28,6 @@ $routes->get('/register', 'Auth::register');
 $routes->post('/auth/registerProcess', 'Auth::registerProcess');
 $routes->get('/logout', 'Auth::logout');
 
+$routes->group('api', function($routes) {
+    $routes->resource('polis', ['controller' => 'PolisApiController']);
+});
